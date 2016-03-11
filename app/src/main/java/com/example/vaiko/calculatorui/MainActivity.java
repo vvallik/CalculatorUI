@@ -1,5 +1,6 @@
 package com.example.vaiko.calculatorui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,27 @@ public class MainActivity extends AppCompatActivity {
    /*     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 */
+        Thread th = new Thread() {
+            public void run() {
+                try {
+                    sleep(1000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    onPause();
+                    startActivity(new Intent("com.example.vaiko.calculatorui.Calc"));
+                }
+            }
+        };
+        th.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        finish();
+
+
 
     }
 
